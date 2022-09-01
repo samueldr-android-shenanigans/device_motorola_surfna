@@ -34,7 +34,7 @@ PRODUCT_MODEL := moto e6
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
         PRODUCT_NAME=surfna \
-        PRIVATE_BUILD_DESC="yessir release-keys"
+        PRIVATE_BUILD_DESC="surfna-user 11 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
 BUILD_FINGERPRINT := google/redfin/redfin:11/RQ2A.210305.007/7124944:user/release-keys
