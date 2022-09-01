@@ -26,10 +26,6 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Inherit from surfna device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
-# GApps
-$(call inherit-product, vendor/partner_gms/products/gms_go_2gb.mk)
-BUILD_GMS=yes
-
 PRODUCT_BRAND := motorola
 PRODUCT_DEVICE := surfna
 PRODUCT_MANUFACTURER := motorola
