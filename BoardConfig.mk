@@ -186,8 +186,6 @@ TARGET_KERNEL_SOURCE := kernel/motorola/sdm632
 TARGET_KERNEL_VERSION := 4.9
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/linux-x86/aarch64/aarch64-elf/bin
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-elf-
 
 # Declare boot header
 BOARD_BOOT_HEADER_VERSION := 1
