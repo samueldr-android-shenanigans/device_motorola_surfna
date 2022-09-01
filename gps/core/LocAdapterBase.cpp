@@ -43,20 +43,13 @@ namespace loc_core {
 // the right locApi should get created.
 LocAdapterBase::LocAdapterBase(const LOC_API_ADAPTER_EVENT_MASK_T mask,
                                ContextBase* context, bool isMaster,
-                               LocAdapterProxyBase *adapterProxyBase,
-                               bool waitForDoneInit) :
+                               LocAdapterProxyBase *adapterProxyBase) :
     mIsMaster(isMaster), mEvtMask(mask), mContext(context),
     mLocApi(context->getLocApi()), mLocAdapterProxyBase(adapterProxyBase),
     mMsgTask(context->getMsgTask()),
     mIsEngineCapabilitiesKnown(ContextBase::sIsEngineCapabilitiesKnown)
 {
-    LOC_LOGd("waitForDoneInit: %d", waitForDoneInit);
-    if (!waitForDoneInit) {
-        mLocApi->addAdapter(this);
-        mAdapterAdded = true;
-    } else {
-        mAdapterAdded = false;
-    }
+    mLocApi->addAdapter(this);
 }
 
 uint32_t LocAdapterBase::mSessionIdCounter(1);
@@ -88,8 +81,8 @@ void LocAdapterBase::
                         const GpsLocationExtended& locationExtended,
                         enum loc_sess_status status,
                         LocPosTechMask loc_technology_mask,
-                        GnssDataNotification* pDataNotify,
-                        int msInWeek)
+                        GnssDataNotification* /*pDataNotify*/,
+                        int /*msInWeek*/)
 {
     if (mLocAdapterProxyBase != NULL) {
         mLocAdapterProxyBase->reportPositionEvent((UlpLocation&)location,
@@ -162,7 +155,7 @@ DEFAULT_IMPL(false)
 bool LocAdapterBase::
     requestNiNotifyEvent(const GnssNiNotification &/*notify*/,
                          const void* /*data*/,
-                         const LocInEmergency emergencyState)
+                         const LocInEmergency /*emergencyState*/)
 DEFAULT_IMPL(false)
 
 void LocAdapterBase::
@@ -331,7 +324,7 @@ LocAdapterBase::updateClientsEventMask()
 DEFAULT_IMPL()
 
 void
-LocAdapterBase::stopClientSessions(LocationAPI* client)
+LocAdapterBase::stopClientSessions(LocationAPI* /*client*/)
 DEFAULT_IMPL()
 
 void
